@@ -82,7 +82,7 @@ public class Steque<Item> implements Iterable<Item> {
      */
     public Item pop() {
         if (isEmpty())
-            throw new NoSuchElementException("No element exists in Steque")
+            throw new NoSuchElementException("No element exists in Steque");
         Item item =first.item;
         first =first.next;
         return item;
@@ -114,6 +114,36 @@ public class Steque<Item> implements Iterable<Item> {
      * 
      */
     public Iterator<Item> iterator() {
-
+        return new StequeIterator();
+    }
+    public class StequeIterator implements Iterator<Item>{
+        Node current = first;
+        public boolean hasNext(){
+            return current != null;
+        }
+        public Item next(){
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+        public void remove(){
+            throw new UnsupportedOperationException("Operation not supported");
+        }
+    }
+    public static void main(String[] args){
+        Steque<Integer> steq = new Steque<Integer>();
+        steq.enqueue(2); 
+        steq.enqueue(1); 
+        steq.push(7); 
+        steq.push(14); 
+        Iterator<Integer> i=steq.iterator(); 
+        System.out.println("elements in steque: "); 
+        while(i.hasNext()){ 
+            System.out.println(i.next()+" "); 
+        } 
+        System.out.println("Deleted elements: ");
+        while(!steq.isEmpty()){ 
+            System.out.println(steq.pop());
+        }
     }
 }
