@@ -30,12 +30,18 @@ import java.util.NoSuchElementException;
  *
  */
 public class Steque<Item> implements Iterable<Item> {
-
+    private Item[] a;
+    private int n;
+    private int first;
+    private static int incapacity = 10;
 
     /**
      * constructs a steque object.
      */
     public Steque() {
+        a=(Item[]) new Object[incapacity];
+        n=0;
+        first=0;
 
     }
     
