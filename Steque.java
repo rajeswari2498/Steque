@@ -15,6 +15,7 @@
  *  
  */
 
+import java.security.PrivateKey;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -117,6 +118,39 @@ public class Steque<Item> implements Iterable<Item> {
      * 
      */
     public Iterator<Item> iterator() {
-
+        return new ArrayIterator();
+    }
+    public class ArrayIterator implements Iterator<Item>{
+        public int i =n-1;
+        public boolean hasNext(){
+            return i>=0;
+        }
+        public void remove(){
+            throw new UnsupportedOperationException();
+        }
+        public Item next(){
+            if(!hasNext()) throw new NoSuchElementException();
+            Item item = a[i];
+            i--;
+            return item; 
+        }
+    }
+    public static void main(String[] args){
+        Steque<Integer> s = new Steque<Integer>();
+        s.enqueue(14);
+        s.enqueue(17);
+        s.enqueue(20);
+        s.push(5);
+        s.push(10);
+        s.push(15);
+        s.enqueue(25);
+        Iterator<Integer> i=s.iterator();
+        System.out.println("Steque Elements: ");
+        while(i.hasNext())
+            System.out.println(i.next());
+            System.out.println("Popped Elements: ");
+        while(!s.isEmpty()){
+            System.out.println(s.pop());
+        }
     }
 }
