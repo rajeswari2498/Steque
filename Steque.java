@@ -61,8 +61,14 @@ public class Steque<Item> implements Iterable<Item> {
     }
     
     
-    private void resize(int i) {
+    private void resize(int capacity) {
+        Item temp[]=(Item[]) new Object[capacity];
+        for(int k=0;k<a.length;k++){
+            temp[k]=a[k];
+        }
+        a=temp;
     }
+    
 
 
     /**
