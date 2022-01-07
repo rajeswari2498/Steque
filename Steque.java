@@ -93,7 +93,7 @@ public class Steque<Item> implements Iterable<Item> {
      * @return true if steque is empty, false otherwise.
      */
     public boolean isEmpty() {
-
+        return first == null || last == null;
     }
     
     /**
