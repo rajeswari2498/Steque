@@ -68,7 +68,12 @@ public class Steque<Item> implements Iterable<Item> {
      * @param item Item to be inserted.
      */
     public void push(Item item) {
-
+        Node oldFirst = first;
+        first= new Node();
+        first.item = item;
+        first.next = oldFirst; 
+        if (last == null)
+            last =first;
     }
     
     /**
