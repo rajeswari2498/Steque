@@ -18,6 +18,8 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import javax.lang.model.util.ElementScanner6;
+
 
 /**
  * 
@@ -30,12 +32,17 @@ import java.util.NoSuchElementException;
  *
  */
 public class Steque<Item> implements Iterable<Item> {
-
+    private Node first, last;
+    private class Node{
+        Item item;
+        Node next;
+    }
 
     /**
      * constructs a steque object.
      */
     public Steque() {
+        first=last=null;
 
     }
     
@@ -45,7 +52,14 @@ public class Steque<Item> implements Iterable<Item> {
      * @param item Item to be inserted.
      */
     public void enqueue(Item item) {
-
+        Node oldLast =last;
+        last = new Node();
+        last.item =item;
+        last.next=null;
+        if(first == null)
+            first = last;
+        else
+            oldLast.next = last;
     }
     
     
