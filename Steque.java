@@ -50,11 +50,21 @@ public class Steque<Item> implements Iterable<Item> {
      * inserts an item in the steque in queue fashion.
      * @param item Item to be inserted.
      */
+    //TIme complexity:O(N);Space complexity:O(N)
     public void enqueue(Item item) {
-
+        if(item==null) throw new IllegalArgumentException();
+        if(n>=a.length) resize(2*a.length);
+        for(int i=a.length-1;i>0;i--)
+            a[i]=a[i-1];
+            a[0]=item;
+            n++;
     }
     
     
+    private void resize(int i) {
+    }
+
+
     /**
      * inserts an item in the steque in stack fashion.
      * @param item Item to be inserted.
